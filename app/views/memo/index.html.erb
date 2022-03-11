@@ -1,4 +1,9 @@
-<h1>Memo#index</h1>
-<p>Find me in app/views/memo/index.html.erb</p>
+<h1>Memo app</h1>
+ <% @posts.each do |post| %>
+ <ul>
+     <li>
+       <%= post.content %>
+     </li>
+ </ul>
+<% end %>
 <%= link_to '新規投稿', '/memo/new' %>
-
