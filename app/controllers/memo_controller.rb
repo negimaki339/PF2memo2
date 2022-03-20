@@ -28,6 +28,10 @@ class MemoController < ApplicationController
  end
 
 private
+def set_post
+   @post = Post.find(params[:id])
+ end
+ 
 def post_params
 　params.permit(:content)
 end
