@@ -1,4 +1,5 @@
 class MemoController < ApplicationController
+ before_action :set_post, only: [:edit, :update, :destroy]
 
  def index
   @posts = Post.all
@@ -30,7 +31,7 @@ class MemoController < ApplicationController
 private
 def set_post
    @post = Post.find(params[:id])
- end
+end
  
 def post_params
 　params.permit(:content)
