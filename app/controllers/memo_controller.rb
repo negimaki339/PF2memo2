@@ -10,12 +10,14 @@ class MemoController < ApplicationController
  end
 
  def create
-   Post.create(post_params)
-   redirect_to root_path
- end
-
- def edit
-   @post = Post.find(params[:id])
+   @post = Post.create(post_params)
+   if @post.save
+     flash[:notice] = "投稿できました"
+     redirect_to root_path
+   else
+     flash[:alert] = "文字を入力してください"
+     redirect_to new_memo_path
+   end
  end
 
  def update
