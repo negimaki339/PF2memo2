@@ -20,17 +20,16 @@ class MemoController < ApplicationController
    end
  end
 
- def update
-   post = Post.find(params[:id])
-   post.update(post_params)
-   redirect_to root_path
+def update
+   if @post.update(post_params)
+     flash[:notice] = "投稿できました"
+     redirect_to root_path
+   else
+     flash[:alert] = "文字を入力してください"
+     redirect_to edit_memo_path(@post.id)
+   end
  end
- def destroy
-   post = Post.find(params[:id])
-   post.destroy
-   redirect_to root_path
- end
-
+ 
 private
 def set_post
    @post = Post.find(params[:id])
