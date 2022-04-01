@@ -29,7 +29,14 @@ def update
      redirect_to edit_memo_path(@post.id)
    end
  end
- 
+ def destroy
+   if @post.destroy
+     flash[:delete] = "削除しました"
+     redirect_to root_path
+   else
+     redirect_to root_path
+   end
+ end
 private
 def set_post
    @post = Post.find(params[:id])
