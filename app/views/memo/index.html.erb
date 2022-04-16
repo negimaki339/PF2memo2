@@ -1,0 +1,21 @@
+<div class="header">
+ <%= link_to 'Memo app', root_path %>
+ <%= link_to '新規投稿', new_memo_path %>
+</div>
+<div class="messages">
+ <% @posts.each do |post| %>
+  <ul class="content">
+      <li class="message">
+        <%= post.content %>
+        <ul>
+          <li class="btn">
+            <%= link_to "ç·¨é›†", edit_memo_path(post), class: "edit-btn" %>
+          </li>
+          <li class="btn">
+            <%= link_to "å‰Šé™¤", memo_path(post.id), class: "delete-btn", method: :delete %>
+          </li>
+        </ul>
+      </li>
+  </ul>
+ <% end %>
+</div>
